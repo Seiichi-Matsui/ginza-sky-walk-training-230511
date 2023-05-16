@@ -1,0 +1,587 @@
+@use "sass:math";
+@use "sass:string";
+@use "../common/vars" as *;
+@use "../common/mixins" as *;
+@use "../common/generated-icon-vars" as *;
+@use "../fonts" as *;
+
+// 共通
+// ----------------------------------------------------
+
+$blue: #0092e5;
+
+body {
+    line-height: 2;
+}
+
+.Section {
+    max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 60px 0;
+
+    @include mediaS {
+        padding: 50px 20px;
+    }
+
+    &__Title {
+        color: $blue;
+        text-align: center;
+    
+        &.-en {
+            font-size: 40px;
+            font-family: $font-din-narrow;
+            font-weight: 200;
+            letter-spacing: .15em;
+            line-height: 1.4;
+            margin-top: 0;
+    
+            @include mediaS {
+                font-size: 30px;
+            }
+        }
+    
+        &.-ja {
+            font-size: 30px;
+            margin-top: 0;
+            color: $blue;
+    
+            @include mediaS {
+                font-size: 24px;
+            }
+        }
+    }
+
+    &__Read {
+        text-align: center;
+        color: $blue;
+        font-size: 17px;
+    }
+    
+    &__FootNotes {
+        p {
+            font-size: 12px;
+            text-align: center;
+
+        }
+    }
+}
+
+
+table {
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+    border-spacing: 26px;
+
+    th {
+        border-right: 1px solid;
+        width: 100px;
+        text-align: left;
+        white-space: nowrap;
+
+        @include mediaS {
+            border-right: none;
+            width: 1px;
+
+            &::after {
+                content: "";
+                height: 1px;
+                display: block;
+                margin-left: -100px;
+                background: currentColor;
+            }
+        }
+    }
+}
+
+img {
+    width: 100%;
+}
+
+h1 {
+    margin: 0;
+}
+
+p {
+    font-size: 14px;
+}
+
+.PcOnly {
+    display: block;
+
+    @include mediaS {
+        display: none;    
+    }
+}
+
+.SpOnly {
+    display: none;
+
+    @include mediaS {
+        display: block;    
+    }
+}
+ul {
+    padding: 0;
+    li {
+        list-style: none;
+    }
+}
+
+strong {
+    font-size: 40px;
+
+    @include mediaS {
+        font-size: 30px;
+    }
+}
+
+em {
+    font-size: 30px;
+    font-style: inherit;
+
+    @include mediaS {
+        font-size: 22px;
+    }
+}
+
+.ButtonContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    margin: 40px 0 0;
+}
+
+.Button {
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 17px;
+    text-decoration: none;
+    font-weight: 700;
+    line-height: normal;
+
+    &.-yellow {
+        width: 380px;
+        height: 50px;
+        background: #fbf143;
+        color: $blue;
+        border-radius: 25px;
+    }
+
+    &.-blue {
+        width: 192.4px;
+        height: 40px;
+        background: $blue;
+        color: #fff;
+        border-radius: 20px;
+        font-size: 14px;
+    }
+
+    &::before {
+        position: absolute;
+        content: "\e004";
+        display: inline-block;
+        font-family: icon;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 0;
+        right: 16px;
+        text-transform: none;
+        top: 50%;
+        vertical-align: middle;
+    }
+
+    span {
+        color: crimson;
+        font-size: 12px;
+    }
+}
+
+// ----------------------------------------------------
+
+.hero {
+    width: 100%;
+}
+
+// ----------------------------------------------------
+
+.Intro {
+    text-align: center;
+    color: $blue;
+
+    &__Logo {
+        width: 171.3px;
+        margin: 0 auto;
+
+        @include mediaS {
+            width: 128.82px;
+        }
+    }
+
+    &__Title {
+        font-size: 26px;
+        margin-top: 30px;
+
+        @include mediaS {
+            font-size: 18px;
+        }
+    }
+
+
+    p {
+        margin-top: 20px;
+        margin-bottom: 28px;
+        font-weight: 700;
+        a {
+            color: $blue;
+        }
+    }
+}
+
+// ----------------------------------------------------
+
+.TalkLive {
+    max-width: 670px;
+    margin: 0 auto;
+
+    &__Caution {
+        margin-top: 0;
+        font-size: 12px;
+        line-height: 1.8;
+        letter-spacing: 1.4px;
+    }
+}
+
+// ----------------------------------------------------
+
+.News {
+    color: #707070;
+    max-width: 670px;
+    margin: 0 auto;
+
+    &__List {
+        
+        li {
+            display: flex;
+            height: 71px;
+            border-top: 1px solid #bfbfbf;
+            display: flex;
+            align-items: center;
+            line-height: 1.6;
+
+            @include mediaS {
+                height: auto;
+                flex-wrap: wrap;
+                padding: 8px 10px 10px;
+            }
+
+            &:last-child {
+                border-bottom: 1px solid #bfbfbf;
+            }
+        }
+
+        &__ItemDate {
+            font-size: 12px;
+        }
+
+        &__ItemTags {
+            
+            &__Tag {
+                font-size: 11px;
+                margin: 0 10px;
+                padding: 2px 6px;
+                background: #e4e4e4;
+                color: #707070;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        &__ItemText {
+            width: 100%;
+            font-size: 14px;
+
+            @include mediaS {
+                font-size: 12px;
+                margin-top: 8px;
+            }
+
+            a {
+                color: #707070;
+            }
+        }
+    }
+
+    &__Bnr {
+        width: 247px;
+        margin-top: 50px;
+
+        @include mediaS {
+            width: 100%;
+        }
+    }
+}
+
+// ----------------------------------------------------
+
+.Outline {
+    background: $blue;
+    color: #fff;
+    font-size: 18px;
+
+
+    .Section__Title {
+        &.-en {
+            color: #fff;
+        }
+    }
+
+    &__Table {
+
+        &__ScheduleText {
+            font-size: 20px;
+			font-family: $font-din-narrow;
+            font-weight: 200;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+    }
+}
+
+// ----------------------------------------------------
+
+.WalkingImage {
+	box-sizing: border-box;
+	padding: 44px 20px;
+	overflow: auto;
+	background: url( "../img/images/bg_001.jpg" ) 50% 50% / cover;
+
+	@include mediaMS {
+		padding: 32px 13px;
+	}
+
+    ul {
+        display: flex;
+        gap: 28px;
+        margin: 0 auto;
+        justify-content: center;
+
+		@include mediaMS {
+			gap: 13px;
+		}
+
+        li {
+            padding: 22px;
+            background: #fff;
+
+            @include mediaMS {
+                padding: 14px;
+            }
+
+            img {
+                display: block;
+                height: 180px;
+                width: auto;
+
+                @include mediaMS {
+                    height: 110px;
+                }
+            }
+        }
+    }
+}
+
+// ----------------------------------------------------
+
+.StageSchedule {
+
+    &__TabList {
+        display: flex;
+        gap: 1%;
+        margin-bottom: 0;
+
+        li {
+            width: 49.5%;
+            background: #e9f9fe;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px 10px 0 0;
+
+            button {
+                color: $blue;
+                font-weight: 700;
+            }
+
+            &.-active {
+                background: $blue;
+
+                button {
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    &__TabPanel {
+        padding: 20px;
+        background: $blue;
+        color: #fff;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        @include mediaS {
+            justify-content: end;
+        }
+
+        &.-current {
+            display: flex;
+        }
+
+        &__Table {
+            font-family: $font-din-narrow;
+            border-spacing: 0 26px;
+
+            th {
+                font-size: 18px;
+                width: 150px;
+
+                @include mediaS {
+                    border-right: none;
+                    width: 1px;
+                    font-size: 14px;
+                }
+            }
+
+            td {
+
+                p {
+                    font-size: 20px;
+                    font-weight: 700;
+                    margin: 0;
+
+                    @include mediaS {
+                        font-size: 14px;
+                    }
+                }
+
+                @include mediaS {
+                    padding-left: 20px;
+                }
+            }
+        }
+
+        &__Caution {
+            font-size: 14px;
+        }
+    }
+}
+
+// ----------------------------------------------------
+
+.Footer {
+    background: $blue;
+    color: #fff;
+
+    &__Wrapper {
+        padding: 30px 20px 0;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    &__Info {
+        display: flex;
+        width: fit-content;
+        margin: 0 auto;
+
+        @include mediaS {
+            display: block;
+        }
+
+        &__Logo {
+            width: 190px;
+
+            @include mediaS {
+                width: 90px;
+                margin: 0 auto;
+            }
+
+            img {
+                width: 90px;
+            }
+        }
+
+        &__Text {
+            line-height: 1.6;
+            margin: 0;
+
+            @include mediaS {
+                display: flex;
+                gap: 30px;
+                text-align: center;
+            }
+
+            dt {
+                font-size: 12px;
+            }
+
+            dd {
+                font-size: 10px;
+                margin-left: 0;
+                margin-bottom: 4px;
+            }
+        }
+    }
+
+    &__Contact {
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        padding: 30px 0;
+
+        @include mediaS {
+            display: block;
+            text-align: center;
+        }
+
+        &__Title {
+            padding: 2px 5px;
+            border: 1px solid #fff;
+            width: fit-content;
+            margin-right: 10px;
+            white-space: nowrap;
+
+            @include mediaS {
+                margin: 0 auto;
+            }
+        }
+
+        &__Text {
+            a {
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__Copyright {
+        font-size: 10px;
+        padding: 20px 0;
+        background: #fff;
+        color: #000;
+        width: 100%;
+        text-align: center;
+    }
+}
