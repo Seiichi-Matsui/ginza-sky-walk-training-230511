@@ -417,18 +417,12 @@ em {
             align-items: center;
             justify-content: center;
             border-radius: 10px 10px 0 0;
-
-            button {
-                color: $blue;
-                font-weight: 700;
-            }
+            color: $blue;
+            font-weight: 700;
 
             &.-active {
                 background: $blue;
-
-                button {
-                    color: #fff;
-                }
+                color: #fff;
             }
         }
     }
@@ -446,7 +440,7 @@ em {
             justify-content: end;
         }
 
-        &.-current {
+        &.-show {
             display: flex;
         }
 
@@ -466,6 +460,7 @@ em {
             }
 
             td {
+                padding-left: 20px;
 
                 p {
                     font-size: 20px;
@@ -475,10 +470,6 @@ em {
                     @include mediaS {
                         font-size: 14px;
                     }
-                }
-
-                @include mediaS {
-                    padding-left: 20px;
                 }
             }
         }
